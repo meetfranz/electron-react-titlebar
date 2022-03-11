@@ -1,4 +1,5 @@
-# electron-react-titlebar
+# @meetfranz/electron-react-titlebar
+
 A github desktop style title bar component for electron.
 
 ![screenshot](https://github.com/KochiyaOcean/electron-react-titlebar/raw/master/app/screenshot.PNG)
@@ -6,7 +7,7 @@ A github desktop style title bar component for electron.
 ## Installation
 
 ```
-npm i --save electron-react-titlebar
+npm i --save @meetfranz/electron-react-titlebar
 ```
 
 ## Example
@@ -21,9 +22,9 @@ npm run demo
 ### Main process
 
 ```javascript
-app.on('ready', () => {
-  require('electron-react-titlebar/main').initialize()
-})
+app.on("ready", () => {
+  require("electron-react-titlebar/main").initialize();
+});
 ```
 
 ### Renderer process
@@ -31,24 +32,28 @@ app.on('ready', () => {
 #### If you are using webpack
 
 ```javascript
-import { TitleBar } from 'electron-react-titlebar/renderer'
-import 'electron-react-titlebar/assets/style.css'
+import { TitleBar } from "electron-react-titlebar/renderer";
+import "electron-react-titlebar/assets/style.css";
 
 ReactDOM.render(
-    <TitleBar menu={menuTemplate} icon={iconPath} />,
-    document.querySelector('title-bar')
-)
+  <TitleBar menu={menuTemplate} icon={iconPath} />,
+  document.querySelector("title-bar")
+);
 ```
 
 #### If you're not a webpack user and wants to load css directly
 
 ```js
 ReactDOM.render(
-    <TitleBar menu={menuTemplate} icon={iconPath}>
-      <link rel="stylesheet" type="text/css" href={require.resolve('electron-react-titlebar/assets/style.css')} />
-    </TitleBar>,
-    document.body
-)
+  <TitleBar menu={menuTemplate} icon={iconPath}>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href={require.resolve("electron-react-titlebar/assets/style.css")}
+    />
+  </TitleBar>,
+  document.body
+);
 ```
 
 ## Options
@@ -73,6 +78,14 @@ Path to icon file (optional).
 
 The browserWindow's id that window controls affect to. Default value is the browserWindow that renders the component (optional).
 
+### onToggleMenuBar?: (isClicked: boolean) => void
+
+Callback function when menu item is clicked (optional)
+
+### showWindowControls?: boolean
+
+Show window controls (minimize, maximize, close) (optional)
+
 ### menu?: \<MenuTemplate\>
 
 Menu template of [Electron's Menu](https://github.com/electron/electron/blob/master/docs/api/menu.md#main-process) (optional).
@@ -81,13 +94,12 @@ Note: electron-react-titlebar is supporting a subset of [Electron's MenuItem](ht
 
 Supported options:
 
-* `click` - supported, but the callback only have `item` and `event` parameter, and the `browserWindow` parameter is removed due to restriction since Electron@14
-* `type` - `submenu` is not supported.
-* `label` - supported
-* `enabled` - supported
-* `visible` - supported
-* `checked` - supported
-
+- `click` - supported, but the callback only have `item` and `event` parameter, and the `browserWindow` parameter is removed due to restriction since Electron@14
+- `type` - `submenu` is not supported.
+- `label` - supported
+- `enabled` - supported
+- `visible` - supported
+- `checked` - supported
 
 ## Breaking changes since v1.0.0
 
