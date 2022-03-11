@@ -1,6 +1,6 @@
 {
-  "name": "electron-react-titlebar",
-  "version": "1.1.0",
+  "name": "@meetfranz/electron-react-titlebar",
+  "version": "1.2.0",
   "description": "A github desktop style title bar component for electron.",
   "main": "index.js",
   "exports": {
@@ -25,13 +25,12 @@
     "titlebar",
     "title"
   ],
-  "homepage": "https://github.com/KochiyaOcean/electron-react-titlebar",
+  "homepage": "https://github.com/meetfranz/electron-react-titlebar",
   "repository": {
-    "url": "https://github.com/KochiyaOcean/electron-react-titlebar"
+    "url": "https://github.com/meetfranz/electron-react-titlebar"
   },
   "bugs": {
-    "url": "https://github.com/KochiyaOcean/electron-react-titlebar/issues",
-    "email": "root@kochiyaocean.org"
+    "url": "https://github.com/meetfranz/electron-react-titlebar/issues"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
