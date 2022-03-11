@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { reduxSet } from './utils'
 import { MenuList } from './menu-list'
 import { MenuItemT } from './menu-list-item'
+import { TitleBarProps } from './titlebar';
 
 export interface MenuT {
   label: string;
@@ -11,9 +12,10 @@ export interface MenuT {
 
 export interface MenuBarProps {
   menu: MenuT[];
+  onToggleMenuBar: TitleBarProps['onToggleMenuBar']
 }
 
-export const MenuBar: React.FC<MenuBarProps> = ({ menu: propMenu }) => {
+export const MenuBar: React.FC<MenuBarProps> = ({ menu: propMenu, onToggleMenuBar = () => null }) => {
   const [clicked, setClicked] = useState(false);
   const [focusing, setFocusing] = useState(0);
   const [menu, setMenu] = useState<MenuT[]>(propMenu)
@@ -32,7 +34,12 @@ export const MenuBar: React.FC<MenuBarProps> = ({ menu: propMenu }) => {
         lock.current = false
         return
       }
-      setClicked(!(focusing === i && clicked))
+
+      const isClicked = !(focusing === i && clicked);
+
+      onToggleMenuBar(isClicked)
+
+      setClicked(isClicked)
     }, [clicked, focusing]
   )
 

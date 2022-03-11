@@ -10,15 +10,17 @@ export interface TitleBarProps {
   disableMaximize?: boolean;
   className?: string;
   browserWindowId?: number;
+  onToggleMenuBar?: (isClicked: boolean) => void;
+  showWindowControls?: boolean;
 }
 
-export const TitleBar: React.FC<TitleBarProps> = ({ children, icon, menu, disableMinimize, disableMaximize, className, browserWindowId }) => (
+export const TitleBar: React.FC<TitleBarProps> = ({ children, icon, menu, disableMinimize, disableMaximize, className, browserWindowId, onToggleMenuBar, showWindowControls = true }) => (
   <div id="electron-app-title-bar" className={`electron-app-title-bar ${className || ''}`}>
     <div className="resize-handle resize-handle-top" />
     <div className="resize-handle resize-handle-left" />
     {!!icon && <img className="icon" src={icon} />}
-    {!!menu && <MenuBar menu={menu} />}
+    {!!menu && <MenuBar menu={menu} onToggleMenuBar={onToggleMenuBar} />}
     {children}
-    <WindowControls disableMinimize={disableMinimize} disableMaximize={disableMaximize} browserWindowId={browserWindowId} />
+    {showWindowControls && <WindowControls disableMinimize={disableMinimize} disableMaximize={disableMaximize} browserWindowId={browserWindowId} /> }
   </div>
 )
